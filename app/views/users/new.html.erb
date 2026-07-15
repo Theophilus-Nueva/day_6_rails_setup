@@ -1,0 +1,32 @@
+<div class="w-md mx-auto mt-10">
+  
+    <%= link_to "← Back to Tasks", tasks_path, class: "text-gray-500 hover:text-gray-800 mb-6 inline-block font-bold" %>
+  
+    <h1 class="text-3xl font-bold mb-6">Register a New User</h1>
+  
+    <%= form_with model: @user, class: "flex flex-col gap-4" do |form| %>
+      
+      <% if @user.errors.any? %>
+        <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
+          <ul class="list-disc ml-5">
+            <% @user.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+  
+      <div>
+        <%= form.label :name, class: "font-bold" %>
+        <%= form.text_field :name, class: "border p-2 w-full rounded" %>
+      </div>
+  
+      <div>
+        <%= form.label :email, class: "font-bold" %>
+        <%= form.email_field :email, class: "border p-2 w-full rounded" %>
+      </div>
+  
+      <%= form.submit "Register User", class: "bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded cursor-pointer mt-4" %>
+      
+    <% end %>
+  </div>
